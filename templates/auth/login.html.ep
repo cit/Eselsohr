@@ -1,0 +1,20 @@
+% layout 'default';
+% title 'Login';
+<div id="content" class="full ui-corner-all">
+  <h1>Sign-in</h1>
+
+  % if (stash 'error') {
+  <div class="ui-state-error ui-corner-all" style="width:466px">
+    <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em"></span><strong>Sorry, invalid username/password combination.</strong>
+  </div>
+  <hr />
+  % }
+
+  <form name="login" method="POST" action="/login">
+    <table>
+      <tr><td>Username:</td><td><input type="text" tabindex="1" name="username" value="<%= param 'username' %>" /></td></tr>
+      <tr><td>Password:</td><td><input type="password" tabindex="2" name="password" value="<%= param 'password'%>" /></td></tr>
+    </table>
+    <input tabindex="3" type="submit" value="Login!"/>
+  </form>
+</div>

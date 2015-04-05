@@ -5,6 +5,11 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
   VERSION   => '0.01',
-  PREREQ_PM => {'Mojolicious' => '6.05'},
+  NAME      => 'Eselsohr',
+  PREREQ_PM => {
+      'Mojolicious'                 => '6.05',
+      'ORLite'                      => '1.98',
+      'Mojolicious::Plugin::Bcrypt' => '0.14',
+  },
   test      => {TESTS => 't/*.t'}
 );

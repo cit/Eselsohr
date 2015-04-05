@@ -5,7 +5,10 @@ use ExtUtils::MakeMaker;
 
 WriteMakefile(
   VERSION   => '0.01',
-  PREREQ_PM => {'Mojolicious' => '6.05'},
   NAME      => 'Eselsohr',
+  PREREQ_PM => {
+      'Mojolicious' => '6.05',
+      'ORLite'      => '1.98',
+  },
   test      => {TESTS => 't/*.t'}
 );

@@ -12,14 +12,14 @@ module.exports = function(grunt) {
           sourceMap: true,
         },
         files: {
-          'css/app.css': 'scss/app.scss'
+          'public/css/app.css': 'scss/app.scss'
         }
       }
     },
     bower_concat: {
       all: {
         dest: 'build/lib/lib.js',
-        cssDest: 'build/lib/foundation.css',
+        cssDest: 'public/css/lib/foundation.css',
         //exclude: [
         //  'jquery',
         //  'modernizr'
@@ -42,7 +42,7 @@ module.exports = function(grunt) {
         //},
         files: {
           'public/js/lib/lib.min.js': ['build/lib/lib.js'],
-          'public/css/lib/foundation.min.css': ['build/lib/foundation.css'],
+          //'public/css/lib/foundation.min.css': ['build/lib/foundation.css'],
         }
       }
     },

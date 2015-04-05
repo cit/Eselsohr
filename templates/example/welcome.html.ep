@@ -1,12 +1,13 @@
 % layout 'default';
 % title 'Welcome to Eselsohr';
-<h2><%= $msg %></h2>
 <div class="row">
-     <div class="large-12 columns">
-        <h1>Welcome to Foundation</h1>
-      </div>
+  <div class="small-12 columns">
+  	<h1 class="text-center">Welcome to Eselsohr</h1>
+  </div>
+  <div class="small-12 columns text-center">
+  	<img class="mainDonkey" src="img/donkey.svg" alt="Donkey head, with bouncing ear">
+  </div>
+  <div class="small-12 columns text-center">
+  	<a href="#" class="button">Login</a>
+  </div>
 </div>
-This page was generated from the template "templates/example/welcome.html.ep"
-and the layout "templates/layouts/default.html.ep",
-<%= link_to 'click here' => url_for %> to reload the page or
-<%= link_to 'here' => '/index.html' %> to move forward to a static page.

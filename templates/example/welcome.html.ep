@@ -1,6 +1,11 @@
 % layout 'default';
 % title 'Welcome to Eselsohr';
 <h2><%= $msg %></h2>
+<div class="row">
+     <div class="large-12 columns">
+        <h1>Welcome to Foundation</h1>
+      </div>
+</div>
 This page was generated from the template "templates/example/welcome.html.ep"
 and the layout "templates/layouts/default.html.ep",
 <%= link_to 'click here' => url_for %> to reload the page or

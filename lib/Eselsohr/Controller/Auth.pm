@@ -3,7 +3,8 @@ use Mojo::Base 'Mojolicious::Controller';
 
 use Eselsohr::Model;
 
-## This function gets the username and password as a parameter and checks
+## This function gets the username and password as a parameter and
+## checks if these values are also in the database.
 sub login {
     my $self = shift;
 
@@ -30,12 +31,15 @@ sub login {
         $self->redirect_to('/' . $username);
     }
     else {
+        ## Invalid Login
         $self->stash(error => 1);
         $self->render(msg => 'login');
     }
 
 }
 
+## This function deletes the session cookie and redirects to login
+## page.
 sub logout {
     my $self = shift;
 

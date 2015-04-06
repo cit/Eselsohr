@@ -2,14 +2,23 @@ package Eselsohr;
 use Mojo::Base 'Mojolicious';
 
 use Mojolicious::Plugin::Bcrypt;
+use Mojolicious::Plugin::Config;
+
+sub load_plugins {
+    my $self = shift;
+
+    ## Read the config file in
+    $self->plugin(Config => {file => 'eselsohr.conf' });
+
+    ## Set settings for bcrypt
+    $self->plugin('bcrypt', { cost => 4 });
+}
 
 ## This method will run once at server start
 sub startup {
     my $self = shift;
 
-    ## Documentation browser under "/perldoc"
-    $self->plugin('PODRenderer');
-    $self->plugin('bcrypt', { cost => 4 });
+    $self->load_plugins();
 
     ## session secret to encrypt the session cookies
     $self->app->secrets(['73ba117e0de616d437080866177c3f90']);

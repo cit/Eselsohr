@@ -23,7 +23,11 @@ sub login {
 
     if ($self->bcrypt_validate($password, $crypted_pass)) {
         ## Valid Login
-        $self->session(username => $username);
+
+        ## Set session data
+        $self->session(username   => $username);
+        $self->session(expiration => $self->config->{expiration});
+
         $self->redirect_to('/' . $username);
     }
     else {

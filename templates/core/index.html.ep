@@ -1,5 +1,17 @@
 % layout 'default';
-% title 'Login';
+% title 'Welcome to Eselsohr';
+<div class="row">
+  <div class="small-12 columns">
+  	<h1 class="text-center">Welcome to Eselsohr</h1>
+  </div>
+  <div class="small-12 columns text-center">
+  	<img class="mainDonkey" src="img/donkey.svg" alt="Donkey head, with bouncing ear">
+  </div>
+  <div class="small-12 columns text-center">
+  	<a href="#" class="button">Login</a>
+  </div>
+</div>
+
 <div id="content" class="full ui-corner-all">
   <h1>Sign-in</h1>
 

@@ -26,8 +26,13 @@ sub startup {
     ## Router
     my $r = $self->routes;
 
+    $r->any('/')->to(cb => sub {
+        my $c = shift;
+        $c->render(template => 'core/index');
+    });
+
     $r->any('/login')->to('auth#login');
-    $r->get('/logout')->to('auth#logout');
+    $r->any('/logout')->to('auth#logout');
 
     ## Redirect to login if there is no valid username in the session
     ## variable
@@ -35,12 +40,11 @@ sub startup {
         my $self = shift;
 
         unless ($self->session('username')) {
-            $self->redirect_to('/login');
+            $self->redirect_to('/');
         }
     });
 
-    ## Normal route to controller
-    $auth->get('/')->to('example#welcome');
+    ## Routes that are only accessible via login
     $auth->get('/:username/')->to('bookmarks#show_all');
 }
 

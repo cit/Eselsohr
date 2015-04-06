@@ -18,15 +18,11 @@ sub login {
         return;
     }
 
-    my @user = Eselsohr::Model::Users->select('WHERE username=?', $username);
+    my ($user) = Eselsohr::Model::Users->select('WHERE username=?', $username);
+    my $crypted_pass = $user->{'password'} || '';
 
-    unless ($user[0]->{'password'}) {
-        $self->stash(error => 1);
-        $self->render(msg => 'login');
-        return;
-    }
-
-    if ($self->bcrypt_validate($password, $user[0]->{'password'})) {
+    if ($self->bcrypt_validate($password, $crypted_pass)) {
+        ## Valid Login
         $self->session(username => $username);
         $self->redirect_to('/' . $username);
     }
@@ -35,7 +31,6 @@ sub login {
         $self->stash(error => 1);
         $self->render(msg => 'login');
     }
-
 }
 
 ## This function deletes the session cookie and redirects to login

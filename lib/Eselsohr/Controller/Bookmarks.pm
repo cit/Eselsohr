@@ -7,7 +7,8 @@ sub show_all {
     my $username = $self->session('username');
 
     # Render template "example/welcome.html.ep" with message
-    $self->render(text => 'Hi ' . $username);
+    $self->stash(username => $username);
+    $self->render();
 }
 
 1;

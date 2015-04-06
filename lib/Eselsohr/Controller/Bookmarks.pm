@@ -7,10 +7,20 @@ use DateTime;
 # This action will render a template
 sub show_all {
     my $self = shift;
-    my $username = $self->session('username');
+    my $id   = $self->session('user_id');
 
-    # Render template "example/welcome.html.ep" with message
-    $self->stash(username => $username);
+    my @bookmarks = Eselsohr::Model::Bookmarks->select_all(
+        user_id => $id,
+        limit   => $self->config->{results_per_page},
+        page    => $self->param('p') || 1,
+    );
+
+    $self->stash(
+        total     => Eselsohr::Model::Bookmarks->count_all($id),
+        bookmarks => \@bookmarks,
+        username  => $self->session('username'),
+    );
+
     $self->render();
 }
 

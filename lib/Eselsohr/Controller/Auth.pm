@@ -11,13 +11,6 @@ sub login {
     my $username = $self->param('username') || undef;
     my $password = $self->param('password') || undef;
 
-    ## Don't check username and password if one of these parameters is
-    ## undefined
-    unless ($username or $password) {
-        $self->render(msg => 'login');
-        return;
-    }
-
     my ($user) = Eselsohr::Model::Users->select('WHERE username=?', $username);
     my $crypted_pass = $user->{'password'} || '';
 

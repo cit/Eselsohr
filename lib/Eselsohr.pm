@@ -3,7 +3,7 @@ use Mojo::Base 'Mojolicious';
 
 use Mojolicious::Plugin::Bcrypt;
 
-# This method will run once at server start
+## This method will run once at server start
 sub startup {
     my $self = shift;
 

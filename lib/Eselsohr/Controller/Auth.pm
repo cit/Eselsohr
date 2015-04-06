@@ -33,7 +33,7 @@ sub login {
     else {
         ## Invalid Login
         $self->stash(error => 1);
-        $self->render(msg => 'login');
+        $self->render(template => 'core/index', msg => 'login');
     }
 }
 
@@ -44,7 +44,7 @@ sub logout {
 
     ## Delete the cookie by setting a expiration date in the past
     $self->session(expires => 1);
-    $self->redirect_to('/login');
+    $self->redirect_to('/');
 }
 
 1;

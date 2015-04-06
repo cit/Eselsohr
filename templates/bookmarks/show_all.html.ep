@@ -6,3 +6,12 @@
 </div>
 
 <h1>Hello <%= $username %></h1>
+
+<div>
+  <form method="get" id="add" action="/<%= $username %>/insert">
+    <input type="text" name="url" value="" /><br>
+    <input type="text" name="desc" value="" /><br>
+    <input type="submit" value="hinzufuegen" />
+  </form>
+</div>
+

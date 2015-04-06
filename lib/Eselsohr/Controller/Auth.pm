@@ -19,6 +19,7 @@ sub login {
 
         ## Set session data
         $self->session(username   => $username);
+        $self->session(user_id    => $user->{'id'});
         $self->session(expiration => $self->config->{expiration});
 
         $self->redirect_to('/' . $username);

@@ -1,24 +1,23 @@
 % layout 'default';
 % title 'Welcome to Eselsohr';
-<div class="row">
-  <div class="small-12 columns">
-  	<h1 class="text-center">Welcome to Eselsohr</h1>
-  </div>
-  <div class="small-12 columns text-center">
-    <object type="image/svg+xml" data="img/donkey.svg">
-      <img src="img/donkey.png" alt="Donkey head, with bouncing ear" />
-    </object>
-  </div>
-  <div class="small-12 columns text-center">
-  	<a href="#" class="button">Login</a>
+<section>
+
+    <div class="row">
+      <div class="small-12 columns">
+      	<h1 class="text-center">Welcome to Eselsohr</h1>
+      </div>
+      <div class="small-12 columns text-center">
+       <!--object type="image/svg+xml" data="img/donkey.svg"-->
+          <img class="donkey" src="img/donkey.png" alt="Donkey head, with bouncing ear" />
+        <!--/object-->
+      </div>
+      <div class="small-12 columns text-center">
+      	<a href="#" class="button">Login</a>
 
 
-  </div>
-</div>
+      </div>
+    </div>
     
-<div id="content" class="full ui-corner-all">
-  <h1>Sign-in</h1>
-
   % if (stash 'error') {
   <div class="ui-state-error ui-corner-all" style="width:466px">
     <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em"></span><strong>Sorry, invalid username/password combination.</strong>
@@ -27,10 +26,21 @@
   % }
 
   <form name="login" method="POST" action="/login">
-    <table>
-      <tr><td>Username:</td><td><input type="text" tabindex="1" name="username" value="<%= param 'username' %>" /></td></tr>
-      <tr><td>Password:</td><td><input type="password" tabindex="2" name="password" value="<%= param 'password'%>" /></td></tr>
-    </table>
-    <input tabindex="3" type="submit" value="Login!"/>
+    <div class="row">
+        <div class="small-3 small-centered columns">
+          <input aria-label="Username" type="text" tabindex="1"  placeholder="Username" name="username" value="<%= param 'username' %>" />
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-3 small-centered columns">
+            <input aria-label="Password" type="password" tabindex="2"  placeholder="Password" name="password" value="<%= param 'password' %>" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-3 small-centered columns">
+            <button type="submit" tabindex="3"  value="Login!"class="button tiny">Tiny Button</button>
+        </div>
+    </div>
   </form>
-</div>
+</section>

@@ -4,32 +4,11 @@
 object{
 	margin-left: 10px;
 }
-/*
-#donkey{
-	transform:scale(1); 
-	-webkit-transform:scale(1);
+
+.donkey{
+	height: 230px;
 	margin-bottom: 20px;
 }
-
-#ear {
-  transform-origin: 40% 85%;
-  -webkit-transform-origin: 40% 85%;
-
-  -webkit-animation: bounceEar 3s 2s 5 normal;
-  animation: bounceEar  3s 2s 5 normal;
-}
-
-@-webkit-keyframes bounceEar {
-  50% {
-    -webkit-transform: rotate(-10deg);
-  }
-}
-
-@keyframes bounceEar {
-  50% {
-    transform: rotate(-10deg);
-  }
-}*/
 
 // Or selectively include components
 // @import

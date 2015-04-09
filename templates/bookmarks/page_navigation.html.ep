@@ -1,0 +1,25 @@
+<%
+   use POSIX;
+
+   my $last_page = ceil($total / $self->config('results_per_page'));
+   my $page_next = ($self->param('p')) ? $self->param('p') + 1 : 2;
+%>
+
+<p class="page_navigation" align="center">
+<%
+   if ($self->param('p') and $self->param('p') > 1) {
+%>
+    <a id="page_back" href="?p=<%= $self->param('p') - 1 %>&q=<%= $self->param('q') %>&t=<%= $self->param('t') %>">&#171; Zurück</a>
+<%
+   }
+%>
+
+
+<%
+   if ($page_next <= $last_page) {
+%>
+    <a id="page_next" href="?p=<%= $page_next %>&q=<%= $self->param('q') %>&t=<%= $self->param('t') %>">Vorwärts &#187;</a>
+<%
+    }
+%>
+</p>

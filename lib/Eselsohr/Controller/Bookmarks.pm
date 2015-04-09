@@ -9,15 +9,18 @@ sub show_all {
     my $self = shift;
     my $id   = $self->session('user_id');
 
-    my @bookmarks = Eselsohr::Model::Bookmarks->select_all(
+    my ($count, $bookmarks) = Eselsohr::Model::Bookmarks->select_all(
         user_id => $id,
+        query   => q[%] . $self->param('q') . q[%],
         limit   => $self->config->{results_per_page},
         page    => $self->param('p') || 1,
     );
 
     $self->stash(
         total     => Eselsohr::Model::Bookmarks->count_all($id),
-        bookmarks => \@bookmarks,
+        count     => $count,
+        bookmarks => $bookmarks,
+        types     => $types,
         username  => $self->session('username'),
     );
 

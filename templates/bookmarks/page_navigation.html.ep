@@ -1,7 +1,7 @@
 <%
    use POSIX;
 
-   my $last_page = ceil($total / $self->config('results_per_page'));
+   my $last_page = ceil($count / $self->config('results_per_page'));
    my $page_next = ($self->param('p')) ? $self->param('p') + 1 : 2;
 %>
 

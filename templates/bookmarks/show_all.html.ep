@@ -15,7 +15,7 @@
   </form>
 </div>
 
-<b><%= $total %></b> bookmarks found<br>
+<b><%= $count %> von <%= $total %></b> bookmarks found<br>
 
 %= include 'bookmarks/page_navigation'
 

@@ -3,6 +3,7 @@ use Mojo::Base 'Mojolicious::Controller';
 
 use Eselsohr::Model;
 use DateTime;
+use Eselsohr::Model::Bookmarks;
 
 sub show_all {
     my $self  = shift;

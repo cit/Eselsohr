@@ -5666,3 +5666,8 @@ object {
 .donkey {
   height: 230px;
   margin-bottom: 20px; }
+
+form[name='login'] {
+  display: none; }
+
+/*# sourceMappingURL=app.css.map */

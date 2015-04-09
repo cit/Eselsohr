@@ -1,18 +1,17 @@
 % layout 'default';
 % title 'Welcome to Eselsohr';
 <section>
-
     <div class="row">
-      <div class="small-12 columns">
+      <div class="small-6 small-centered columns text-center">
       	<h1 class="text-center">Welcome to Eselsohr</h1>
       </div>
-      <div class="small-12 columns text-center">
+      <div class="small-6 small-centered columns text-center">
        <!--object type="image/svg+xml" data="img/donkey.svg"-->
           <img class="donkey" src="img/donkey.png" alt="Donkey head, with bouncing ear" />
         <!--/object-->
       </div>
-      <div class="small-12 columns text-center">
-      	<a href="#" class="button">Login</a>
+      <div class="small-6 small-centered columns text-center">
+      	<a id="loginBtn" class="button tiny">Login</a>
 
 
       </div>
@@ -27,19 +26,19 @@
 
   <form name="login" method="POST" action="/login">
     <div class="row">
-        <div class="small-3 small-centered columns">
+        <div class="small-4 small-centered columns">
           <input aria-label="Username" type="text" tabindex="1"  placeholder="Username" name="username" value="<%= param 'username' %>" />
 
         </div>
     </div>
     <div class="row">
-        <div class="small-3 small-centered columns">
+        <div class="small-4 small-centered columns">
             <input aria-label="Password" type="password" tabindex="2"  placeholder="Password" name="password" value="<%= param 'password' %>" />
         </div>
     </div>
     <div class="row">
-        <div class="small-3 small-centered columns">
-            <button type="submit" tabindex="3"  value="Login!"class="button tiny">Tiny Button</button>
+        <div class="small-2 small-centered columns text-center">
+            <button type="submit" tabindex="3"  value="Login!"class="button tiny">Login</button>
         </div>
     </div>
   </form>

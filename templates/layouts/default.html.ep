@@ -3,7 +3,6 @@
   <head>
   	<link rel="stylesheet" href="/css/app.css" />
     <script src="/js/lib/lib.js"></script>
-    <script src="/js/lib/snap.svg.js"></script>
   	<title>
   		<%= title %>
   	</title>

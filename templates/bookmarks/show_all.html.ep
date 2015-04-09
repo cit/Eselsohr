@@ -1,5 +1,5 @@
 % layout 'default';
-% title 'Welcome to Eselsohr';
+% title 'Eselsohr';
 
 <div align="right">
 <a href="/logout">Logout</a>
@@ -7,7 +7,7 @@
 
 <h1>Hello <%= $username %></h1>
 
-<div>
+<div style="width: 300px;">
   <form method="get" id="add" action="/<%= $username %>/insert">
     <input type="text" name="url" value="" /><br>
     <input type="text" name="desc" value="" /><br>
@@ -15,27 +15,41 @@
   </form>
 </div>
 
+<div style="width: 300px; float:right; border: 1px solid black; padding: 5px;">
+  <form method="get" action="/ <%= $username %>">
+    <input style="width: 295px;" type="text" name="q" value="<%= $self->param('q') %>" /><br>
+    <!--input type="submit" value="Suchen" />-->
+
+    <% foreach my $type (@{$types}) {
+       my $checked = ($type eq $self->param('t')) ? 'checked' : '';
+     %>
+    <input type="radio" name="t" value="<%= $type %>"<%= $checked %> ><%= $type %>&nbsp;
+    <% } %>
+
+  </form>
+</div>
+
+
 <b><%= $count %> von <%= $total %></b> bookmarks found<br>
 
 %= include 'bookmarks/page_navigation'
 
-<table border="0" cellspacing="0" cellpadding="3" width="100%"
-       class="datasheet">
-<th>Datum</th>
-<th>Beschreibung</th>
-<th>Hostname</th>
-<th>ID</th>
-<th>Size/Type</th>
+<table border="0" cellspacing="0" cellpadding="3" width="100%" class="datasheet">
+  <th>Datum</th>
+  <th>Beschreibung</th>
+  <th>Hostname</th>
+  <th>ID</th>
+  <th>Size/Type</th>
 <%
    my $i = 0;
    foreach my $url (@{$bookmarks}) {
-   %>
+ %>
 <tr class="<%= ($i % 2) ? 'even' : 'odd' %>">
   <td><a href="<%= $url->url %>" target="_foo"><%= $url->date %></a></td>
-  <%
+<%
      my $desc = $url->desc;
      $desc =~ s/#(\w+)/\<a href=\"\?q=%23$1\">#$1<\/a>/g;
-   %>
+ %>
   <td class="editableText" id="<%= $url->id %>"><%== $desc %></td>
   <td><%= $url->host %></td>
   <% if ($url->mime) { %>

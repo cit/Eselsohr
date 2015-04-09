@@ -4,10 +4,10 @@ use Mojo::Base 'Mojolicious::Controller';
 use Eselsohr::Model;
 use DateTime;
 
-# This action will render a template
 sub show_all {
-    my $self = shift;
-    my $id   = $self->session('user_id');
+    my $self  = shift;
+    my $id    = $self->session('user_id');
+    my $types = ['desc', 'host', 'mime'];
 
     my ($count, $bookmarks) = Eselsohr::Model::Bookmarks->select_all(
         user_id => $id,
@@ -30,7 +30,7 @@ sub show_all {
 sub insert {
     my $self = shift;
 
-    # extract the hostname out of the url
+    ## Extract the hostname out of the url
     my $host_regex = qr/[a-z0-9-]+(\.[a-z0-9-]+)+/;
     $self->param('url') =~ /(https?|http):\/\/(?<hostname>$host_regex)/;
 

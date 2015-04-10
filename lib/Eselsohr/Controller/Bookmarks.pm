@@ -12,7 +12,7 @@ sub show_all {
 
     my ($count, $bookmarks) = Eselsohr::Model::Bookmarks->select_all(
         user_id => $id,
-        query   => q[%] . $self->param('q') . q[%],
+        query   => q[%] . ($self->param('q') || '') . q[%],
         limit   => $self->config->{results_per_page},
         page    => $self->param('p') || 1,
     );

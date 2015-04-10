@@ -21,7 +21,8 @@
     <!--input type="submit" value="Suchen" />-->
 
     <% foreach my $type (@{$types}) {
-       my $checked = ($type eq $self->param('t')) ? 'checked' : '';
+       my $param_type = $self->param('t') || '';
+       my $checked    = ($type eq $param_type) ? 'checked' : '';
      %>
     <input type="radio" name="t" value="<%= $type %>"<%= $checked %> ><%= $type %>&nbsp;
     <% } %>

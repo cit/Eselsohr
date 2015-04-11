@@ -6,19 +6,19 @@ use DateTime;
 use Eselsohr::Model::Bookmarks;
 
 sub show_all {
-    my $self  = shift;
-    my $id    = $self->session('user_id');
-    my $types = ['desc', 'host', 'mime'];
+    my $self    = shift;
+    my $user_id = $self->session('user_id');
+    my $types   = ['desc', 'host', 'mime'];
 
     my ($count, $bookmarks) = Eselsohr::Model::Bookmarks->select_all(
-        user_id => $id,
+        user_id => $user_id,
         query   => q[%] . ($self->param('q') || '') . q[%],
         limit   => $self->config->{results_per_page},
         page    => $self->param('p') || 1,
     );
 
     $self->stash(
-        total     => Eselsohr::Model::Bookmarks->count_all($id),
+        total     => Eselsohr::Model::Bookmarks->count_all($user_id),
         count     => $count,
         bookmarks => $bookmarks,
         types     => $types,
@@ -43,6 +43,15 @@ sub insert {
         desc    => $self->param('desc'),
     );
 
+    $self->redirect_to('/' . $self->session('username'));
+}
+
+sub delete {
+    my $self        = shift;
+    my $user_id     = $self->session('user_id');
+    my $bookmark_id = $self->param('id');
+
+    Eselsohr::Model::Bookmarks->delete_where('user_id=? AND id=?', $user_id, $bookmark_id);
     $self->redirect_to('/' . $self->session('username'));
 }
 

@@ -16,7 +16,7 @@
 </div>
 
 <div style="width: 300px; float:right; border: 1px solid black; padding: 5px;">
-  <form method="get" action="/ <%= $username %>">
+  <form method="get" action="/<%= $username %>">
     <input style="width: 295px;" type="text" name="q" value="<%= $self->param('q') %>" /><br>
     <!--input type="submit" value="Suchen" />-->
 
@@ -51,10 +51,12 @@
      my $desc = $url->desc;
      $desc =~ s/#(\w+)/\<a href=\"\?q=%23$1\">#$1<\/a>/g;
  %>
-  <td class="editableText" id="<%= $url->id %>"><%== $desc %></td>
+    <td class="editableText" id="<%= $url->id %>"><%== $desc %>
+      [<a href="/<%= $username %>/delete/<%= $url->id %>/">Delete</a>]
+    </td>
   <td><%= $url->host %></td>
   <% if ($url->mime) { %>
-  <td><a href="/<%= $url->id %>/<%= $url->id %>.<%= $url->ext %>"><%= $url->id %></a></td>
+    <td><a href="/<%= $url->id %>/<%= $url->id %>.<%= $url->ext %>"><%= $url->id %></a></td>
       <td><%= sprintf("%.2f", ($url->size/1024)) %> KB <br> <%= $url->mime %></td>
   <% } else { %>
      <td><%= $url->id %></td>

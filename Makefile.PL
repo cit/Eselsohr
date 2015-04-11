@@ -10,6 +10,7 @@ WriteMakefile(
       'Mojolicious'                 => '6.05',
       'ORLite'                      => '1.98',
       'Mojolicious::Plugin::Bcrypt' => '0.14',
+      'Mojolicious::Plugin::I18N'   => '1.5',
       'DateTime'                    => '1.18',
   },
   test      => {TESTS => 't/*.t'}

@@ -3,12 +3,21 @@ use Mojo::Base 'Mojolicious';
 
 use Mojolicious::Plugin::Bcrypt;
 use Mojolicious::Plugin::Config;
+use Mojolicious::Plugin::I18N;
 
 sub load_plugins {
     my $self = shift;
 
+    $self->plugin(charset => {charset => 'utf8'});
+
     ## Read the config file in
     $self->plugin(Config => {file => 'eselsohr.conf' });
+
+    ## Load language plugin
+    $self->plugin(I18N => {
+        namespace        => 'Eselsohr::I18N',
+        default          => $self->config->{default_language},
+    });
 
     ## Set settings for bcrypt
     $self->plugin('bcrypt', { cost => 4 });

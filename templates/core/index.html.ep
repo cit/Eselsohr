@@ -16,10 +16,10 @@
 
       </div>
     </div>
-    
+
   % if (stash 'error') {
   <div class="ui-state-error ui-corner-all" style="width:466px">
-    <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em"></span><strong>Sorry, invalid username/password combination.</strong>
+    <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em"></span><strong><%=l 'err_index_invalid_login' %></strong>
   </div>
   <hr />
   % }
@@ -27,13 +27,13 @@
   <form name="login" method="POST" action="/login">
     <div class="row">
         <div class="small-4 small-centered columns">
-          <input aria-label="Username" type="text" tabindex="1"  placeholder="Username" name="username" value="<%= param 'username' %>" />
+          <input aria-label="Username" type="text" tabindex="1"  placeholder="<%=l 'username' %>" name="username" value="<%= param 'username' %>" />
 
         </div>
     </div>
     <div class="row">
         <div class="small-4 small-centered columns">
-            <input aria-label="Password" type="password" tabindex="2"  placeholder="Password" name="password" value="<%= param 'password' %>" />
+            <input aria-label="Password" type="password" tabindex="2"  placeholder="<%=l 'password' %>" name="password" value="<%= param 'password' %>" />
         </div>
     </div>
     <div class="row">

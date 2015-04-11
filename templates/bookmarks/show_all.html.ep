@@ -2,7 +2,7 @@
 % title 'Eselsohr';
 
 <div align="right">
-<a href="/logout">Logout</a>
+<a href="/logout"><%=l 'logout' %></a>
 </div>
 
 <h1>Hello <%= $username %></h1>
@@ -36,14 +36,14 @@
 %= include 'bookmarks/page_navigation'
 
 <table border="0" cellspacing="0" cellpadding="3" width="100%" class="datasheet">
-  <th>Datum</th>
-  <th>Beschreibung</th>
-  <th>Hostname</th>
-  <th>ID</th>
-  <th>Size/Type</th>
+  <th><%=l 'date' %></th>
+  <th><%=l 'description' %></th>
+  <th><%=l 'hostname' %></th>
+  <th><%=l 'id' %></th>
+  <th><%=l 'size' %>/<%=l 'type' %></th>
 <%
    my $i = 0;
-   foreach my $url (@{$bookmarks}) {
+   for my $url (@$bookmarks) {
  %>
 <tr class="<%= ($i % 2) ? 'even' : 'odd' %>">
   <td><a href="<%= $url->url %>" target="_foo"><%= $url->date %></a></td>

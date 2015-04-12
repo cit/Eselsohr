@@ -7,13 +7,31 @@
 
 <h1>Hello <%= $username %></h1>
 
-<div style="width: 300px;">
   <form method="get" id="add" action="/<%= $username %>/insert">
-    <input type="text" name="url" value="" /><br>
-    <input type="text" name="desc" value="" /><br>
-    <input type="submit" value="hinzufuegen" />
+
+  <div class="row">
+    <div class="small-6 columns">
+      <div class="row collapse prefix-radius">
+        <div class="small-3 columns">
+          <span class="prefix">http://</span>
+        </div>
+        <div class="small-9 columns">
+          <input type="text"  name="url" value="" placeholder="Enter your URL">
+        </div>
+      </div>
+    </div>
+    <div class="small-6 columns">
+      <div class="row collapse postfix-radius">
+        <div class="small-9 columns">
+          <input type="text" name="desc" value=""  placeholder="description">
+        </div>
+        <div class="small-3 columns">
+          <a  type="submit" value="hinzufuegen" href="#" class="button postfix">Save it!</a>
+        </div>
+      </div>
+    </div>
+  </div>
   </form>
-</div>
 
 <div style="width: 300px; float:right; border: 1px solid black; padding: 5px;">
   <form method="get" action="/<%= $username %>">
@@ -51,8 +69,10 @@
      my $desc = $url->desc;
      $desc =~ s/#(\w+)/\<a href=\"\?q=%23$1\">#$1<\/a>/g;
  %>
-    <td class="editableText" id="<%= $url->id %>"><%== $desc %>
+    <td id="<%= $url->id %>">
+      <span class="editableText"><%== $desc %></span>
       [<a href="/<%= $username %>/delete/<%= $url->id %>/">Delete</a>]
+      [<a class="editText">edit</a>]
     </td>
   <td><%= $url->host %></td>
   <% if ($url->mime) { %>

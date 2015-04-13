@@ -36,8 +36,17 @@ sub startup {
     my $r = $self->routes;
 
     $r->any('/')->to(cb => sub {
-        my $c = shift;
-        $c->render(template => 'core/index');
+        my $self = shift;
+
+        ## Redirect directly to the bookmarks if a valid session is
+        ## found
+        if ($self->session('username')) {
+            $self->redirect_to('/' . $self->session('username'));
+            return;
+        }
+
+        ## Else render index
+        $self->render(template => 'core/index');
     });
 
     $r->any('/login')->to('auth#login');

@@ -46,6 +46,15 @@ sub insert {
     $self->redirect_to('/' . $self->session('username'));
 }
 
+sub update {
+    my $self  = shift;
+    my $id    = $self->param('id');
+    my $query = 'WHERE id=?';
+
+    my ($bookmark) = Eselsohr::Model::Bookmarks->select($query, $id);
+    $bookmark->update(desc => $self->param('desc'));
+}
+
 sub delete {
     my $self        = shift;
     my $user_id     = $self->session('user_id');

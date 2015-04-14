@@ -66,6 +66,7 @@ sub startup {
     $auth->get('/:username/')->to('bookmarks#show_all');
     $auth->get('/:username/insert')->to('bookmarks#insert');
     $auth->get('/:username/delete/:id')->to('bookmarks#delete');
+    $auth->any('/:username/update/:id')->to('bookmarks#update');
 }
 
 1;

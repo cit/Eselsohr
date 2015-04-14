@@ -63,9 +63,9 @@ sub startup {
     });
 
     ## Routes that are only accessible after the login
-    $auth->get('/:username/')->to('bookmarks#show_all');
-    $auth->get('/:username/insert')->to('bookmarks#insert');
-    $auth->get('/:username/delete/:id')->to('bookmarks#delete');
+    $auth->any('/:username/')->to('bookmarks#show_all');
+    $auth->any('/:username/insert')->to('bookmarks#insert');
+    $auth->any('/:username/delete/:id')->to('bookmarks#delete');
     $auth->any('/:username/update/:id')->to('bookmarks#update');
 }
 

@@ -30,12 +30,11 @@ $('table').find('.editText').on('click', function(event){
 		$currentTarget.parent().append($textarea);
 	} else {
 		$textarea = $currentTarget.siblings('.editableTextarea');
-		
-		$editableText.html($textarea.val())
-		$editableText.show();
-		var desc = 'Foobar';
+		var desc = $textarea.val();
 		var id = $currentTarget.parent().attr('id');
-		console.log(username);
+		$editableText.html(desc)
+		$editableText.show();
+
 		testingAjax(username, desc, id);
 		$textarea.remove();
 	}

@@ -1,8 +1,8 @@
 package Eselsohr::Controller::Bookmarks;
 use Mojo::Base 'Mojolicious::Controller';
 
-use Eselsohr::Model;
 use DateTime;
+use Eselsohr::Model;
 use Eselsohr::Model::Bookmarks;
 
 sub show_all {

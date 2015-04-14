@@ -11,22 +11,16 @@
 
   <div class="row">
     <div class="small-6 columns">
-      <div class="row collapse prefix-radius">
-        <div class="small-3 columns">
-          <span class="prefix">http://</span>
-        </div>
-        <div class="small-9 columns">
-          <input type="text"  name="url" value="" placeholder="Enter your URL">
-        </div>
-      </div>
+      <input type="text"  name="url" value="" placeholder="Enter your URL"/>
+
     </div>
     <div class="small-6 columns">
       <div class="row collapse postfix-radius">
         <div class="small-9 columns">
-          <input type="text" name="desc" value=""  placeholder="description">
+          <input type="text" name="desc" value=""  placeholder="description"/>
         </div>
         <div class="small-3 columns">
-          <a  type="submit" value="hinzufuegen" href="#" class="button postfix">Save it!</a>
+          <button  type="submit" value="hinzufuegen" href="#" class="button postfix">Save it!</button>
         </div>
       </div>
     </div>
@@ -53,7 +47,7 @@
 
 %= include 'bookmarks/page_navigation'
 
-<table border="0" cellspacing="0" cellpadding="3" width="100%" class="datasheet">
+<table data-user='<%= $username %>' border="0" cellspacing="0" cellpadding="3" width="100%" class="datasheet">
   <th><%=l 'date' %></th>
   <th><%=l 'description' %></th>
   <th><%=l 'hostname' %></th>

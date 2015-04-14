@@ -12,6 +12,9 @@ $('#loginBtn').click(function(event){
 	
 });	
 
+
+var username = $('table').attr('data-user');
+
 /**
 * click event to toggle between editableText and textarea
 */
@@ -19,6 +22,7 @@ $('table').find('.editText').on('click', function(event){
 	var $currentTarget = $(event.currentTarget);
 	var $editableText = $currentTarget.siblings('.editableText');
 	var $textarea = $('<textarea class="editableTextarea"></textarea');
+
 
 	if($editableText.is(":visible")){
 		$textarea.val($editableText.html());
@@ -29,7 +33,23 @@ $('table').find('.editText').on('click', function(event){
 		
 		$editableText.html($textarea.val())
 		$editableText.show();
-		
+		var desc = 'Foobar';
+		var id = $currentTarget.parent().attr('id');
+		console.log(username);
+		testingAjax(username, desc, id);
 		$textarea.remove();
 	}
 });
+
+var testingAjax = function(username, desc, id){
+	$.ajax({
+  		method: "POST",
+  		url: "/" + username + "/update/" + id,
+  		data: { desc: desc }
+	})
+  	.done(function( msg ) {
+    	alert( "Data Saved: " + msg );
+  	});
+}
+
+

@@ -16,18 +16,29 @@ sub login {
 
     if ($self->bcrypt_validate($password, $crypted_pass)) {
         ## Valid Login
-
-        ## Set session data
-        $self->session(username   => $username);
-        $self->session(user_id    => $user->{'id'});
-        $self->session(expiration => $self->config->{expiration});
-
+        $self->set_session_data($user);
         $self->redirect_to('/' . $username);
     }
     else {
         ## Invalid Login
         $self->stash(error => 1);
         $self->render(template => 'core/index', msg => 'login');
+    }
+}
+
+## This function sets all the session data for a successful login
+sub set_session_data {
+    my ($self, $user) = @_;
+
+    $self->session(username => $self->param('username'));
+    $self->session(user_id  => $user->{'id'});
+
+    ## Check if a user has checked the keep_me_signed_in Option
+    if ($self->param('keep_me_signed_in')) {
+        $self->session(expiration => 0);
+    }
+    else {
+        $self->session(expiration => $self->config->{expiration});
     }
 }
 

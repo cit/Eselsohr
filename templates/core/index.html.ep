@@ -33,13 +33,16 @@
     </div>
     <div class="row">
         <div class="small-4 small-centered columns">
-            <input aria-label="Password" type="password" tabindex="2"  placeholder="<%=l 'password' %>" name="password" value="<%= param 'password' %>" />
+          <input aria-label="Password" type="password" tabindex="2"  placeholder="<%=l 'password' %>" name="password" value="<%= param 'password' %>" />
+          <input type="checkbox" id="signed_id" value="1" name="keep_me_signed_in" />&nbsp;<%=l 'keep_me_signed_in' %>
         </div>
     </div>
     <div class="row">
         <div class="small-2 small-centered columns text-center">
-            <button type="submit" tabindex="3"  value="Login!"class="button tiny">Login</button>
+            <button type="submit" tabindex="3"  value="Login!" class="button tiny">Login</button>
         </div>
+
     </div>
+
   </form>
 </section>

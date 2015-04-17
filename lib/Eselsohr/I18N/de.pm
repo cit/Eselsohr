@@ -13,6 +13,7 @@ our %Lexicon = (
 
     username => 'Benutzername',
     password => 'Passwort',
+    keep_me_signed_in => 'Eingeloggt bleiben',
 
     err_index_invalid_login => 'Die Benutzerdaten sind nicht korrekt.',
 

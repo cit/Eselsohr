@@ -50,5 +50,3 @@ var testingAjax = function(username, desc, id){
     	alert( "Data Saved: " + msg );
   	});
 }
-
-

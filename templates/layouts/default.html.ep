@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" href="/css/icoMoon.css" />
   	<link rel="stylesheet" href="/css/app.css" />
     <script src="/js/lib/lib.js"></script>
   	<title>

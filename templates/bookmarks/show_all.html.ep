@@ -1,46 +1,49 @@
 % layout 'default';
 % title 'Eselsohr';
+<nav class="top-bar" data-topbar role="navigation">
+    <section class="top-bar-section">
+        <img class="donkey" src="img/donkey.png" alt="Donkey head, with bouncing ear" />
+        <ul class="right">
+            <li class="">
+                <a data-dropdown="searchBox" aria-controls="searchBox" aria-expanded="false" class="icon icon-search"></a>
+            </li>
+            <li class="">
+                <a data-dropdown="addLinkBox" aria-controls="addLinkBox" aria-expanded="false" class="icon icon-plus"></a>
+            </li>
+            <li class="has-dropdown">
+                <a><%= $username %></a>
+                <ul class="dropdown">
+                  <li><a href="/logout"><%=l 'logout' %></a></li>
+                  <li><a href="#">Settings?</a></li>
+                </ul>
+            </li>
+        </ul>  
+        
+    </section>
+</nav>
+<div id="addLinkBox" data-dropdown-content aria-autoclose="false" class="f-dropdown content medium addLinkBox" aria-hidden="true" tabindex="-1">
+    <form method="get" id="add" action="/<%= $username %>/insert">
+        <input type="text"  name="url" value="" placeholder="Enter your URL"/>
+        <textarea name="desc" value=""  placeholder="description"></textarea>
+        <button  type="submit" value="hinzufuegen" href="#" class="button expand tiny">Save it!</button>
+        </div>
+    </form>
+</div> 
+<div id="searchBox" data-dropdown-content aria-autoclose="false" class="f-dropdown content medium searchBox" aria-hidden="true" tabindex="-1">
+     <form method="get" action="/<%= $username %>">
+        <input type="text" name="q" value="<%= $self->param('q') %>" placeholder="Enter your search term..."/>
 
-<div align="right">
-<a href="/logout"><%=l 'logout' %></a>
+        <% foreach my $type (@{$types}) {
+           my $param_type = $self->param('t') || '';
+           my $checked    = ($type eq $param_type) ? 'checked' : '';
+         %>
+        <input type="radio" name="t" value="<%= $type %>"<%= $checked %> ><%= $type %>&nbsp;
+        <% } %>
+        <button type="submit" value="Suchen" class="button expand tiny">suchen</button>
+
+      </form>
 </div>
 
-<h1>Hello <%= $username %></h1>
-
-  <form method="get" id="add" action="/<%= $username %>/insert">
-
-  <div class="row">
-    <div class="small-6 columns">
-      <input type="text"  name="url" value="" placeholder="Enter your URL"/>
-
-    </div>
-    <div class="small-6 columns">
-      <div class="row collapse postfix-radius">
-        <div class="small-9 columns">
-          <input type="text" name="desc" value=""  placeholder="description"/>
-        </div>
-        <div class="small-3 columns">
-          <button  type="submit" value="hinzufuegen" href="#" class="button postfix">Save it!</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  </form>
-
-<div style="width: 300px; float:right; border: 1px solid black; padding: 5px;">
-  <form method="get" action="/<%= $username %>">
-    <input style="width: 295px;" type="text" name="q" value="<%= $self->param('q') %>" /><br>
-    <!--input type="submit" value="Suchen" />-->
-
-    <% foreach my $type (@{$types}) {
-       my $param_type = $self->param('t') || '';
-       my $checked    = ($type eq $param_type) ? 'checked' : '';
-     %>
-    <input type="radio" name="t" value="<%= $type %>"<%= $checked %> ><%= $type %>&nbsp;
-    <% } %>
-
-  </form>
-</div>
 
 
 <b><%= $count %> von <%= $total %></b> bookmarks found<br>

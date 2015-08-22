@@ -1,11 +1,8 @@
-// Foundation JavaScript
-// Documentation can be found at: http://foundation.zurb.com/docs
-$(document).foundation();
-
 /**
 * click event to slide down loggin form
 *
 */
+
 $('#loginBtn').click(function(event){
 	$(this).slideUp('200');
 	$("form[name='login']").slideDown('230');
@@ -50,3 +47,4 @@ var testingAjax = function(username, desc, id){
     	alert( "Data Saved: " + msg );
   	});
 }
+

@@ -1,46 +1,52 @@
 % layout 'default';
 % title 'Welcome to Eselsohr';
-<section>
+<section class="container-fluid">
     <div class="row">
-      <div class="small-6 small-centered columns text-center">
+      <div class="col-md-12">
       	<h1 class="text-center">Welcome to Eselsohr</h1>
       </div>
-      <div class="small-6 small-centered columns text-center">
+      <div class="col-md-12 text-center">
        <!--object type="image/svg+xml" data="img/donkey.svg"-->
           <img class="donkey" src="img/donkey.png" alt="Donkey head, with bouncing ear" />
         <!--/object-->
       </div>
-      <div class="small-6 small-centered columns text-center">
-      	<a id="loginBtn" class="button tiny">Login</a>
+    </div>
+
+    <div class="col-md-3 col-centered">
+        % if (stash 'error') {
+        <div class="alert alert-danger" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <span class="sr-only">Error:</span>
+          <strong><%=l 'err_index_invalid_login' %></strong>
+        </div>
+    % }
+      <div class="panel panel-default">
+        <div class="panel-heading">Login</div>
+        
+        <div class="panel-body">
+          <form name="login" method="POST" action="/login">
+            <div class="form-group">
+                <div class="">
+                  <input aria-label="Username" type="text" tabindex="1" class="form-control"  placeholder="<%=l 'username' %>" name="username" value="<%= param 'username' %>" />
+
+                </div>
+            </div>
+            <div class="">
+              <input aria-label="Password" type="password" tabindex="2" class="form-control" placeholder="<%=l 'password' %>" name="password" value="<%= param 'password' %>" />
+            </div>
+            <div class="checkbox">
+                <label>
+                  <input type="checkbox" id="signed_id" value="1" name="keep_me_signed_in" />&nbsp;<%=l 'keep_me_signed_in' %>
+                </label>
+            </div>
+            <div class="text-right">
+              <button type="submit" tabindex="3" value="Login!" class="btn btn-primary">Login</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
 
-  % if (stash 'error') {
-  <div class="ui-state-error ui-corner-all" style="width:466px">
-    <span class="ui-icon ui-icon-alert" style="float: left; margin-right: .3em"></span><strong><%=l 'err_index_invalid_login' %></strong>
-  </div>
-  <hr />
-  % }
 
-  <form name="login" method="POST" action="/login">
-    <div class="row">
-        <div class="small-4 small-centered columns">
-          <input aria-label="Username" type="text" tabindex="1"  placeholder="<%=l 'username' %>" name="username" value="<%= param 'username' %>" />
-
-        </div>
-    </div>
-    <div class="row">
-        <div class="small-4 small-centered columns">
-          <input aria-label="Password" type="password" tabindex="2"  placeholder="<%=l 'password' %>" name="password" value="<%= param 'password' %>" />
-          <input type="checkbox" id="signed_id" value="1" name="keep_me_signed_in" />&nbsp;<%=l 'keep_me_signed_in' %>
-        </div>
-    </div>
-    <div class="row">
-        <div class="small-2 small-centered columns text-center">
-            <button type="submit" tabindex="3"  value="Login!" class="button tiny">Login</button>
-        </div>
-
-    </div>
-
-  </form>
 </section>

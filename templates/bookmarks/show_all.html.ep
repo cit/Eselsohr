@@ -1,50 +1,81 @@
 % layout 'default';
 % title 'Eselsohr';
-<nav class="top-bar" data-topbar role="navigation">
-    <section class="top-bar-section">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
         <img class="donkey" src="img/donkey.png" alt="Donkey head, with bouncing ear" />
-        <ul class="right">
-            <li class="">
-                <a data-dropdown="searchBox" aria-controls="searchBox" aria-expanded="false" class="icon icon-search"></a>
-            </li>
-            <li class="">
-                <a data-dropdown="addLinkBox" aria-controls="addLinkBox" aria-expanded="false" class="icon icon-plus"></a>
-            </li>
-            <li class="has-dropdown">
-                <a><%= $username %></a>
-                <ul class="dropdown">
-                  <li><a href="/logout"><%=l 'logout' %></a></li>
-                  <li><a href="#">Settings?</a></li>
-                </ul>
-            </li>
-        </ul>  
-        
-    </section>
+      </a>
+    </div>
+
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="">
+            <a class="glyphicon glyphicon-search js-openPopover" id="searchPopover"></a>
+        </li>
+        <li class="">
+            <a class="glyphicon glyphicon-plus js-openPopover" id="addPopover"></a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= $username %><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Settings?</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="/logout"><%=l 'logout' %></a></li>
+          </ul>
+        </li>
+      </ul>
+    </div><!--/.navbar-collapse -->
+  </div>
 </nav>
-<div id="addLinkBox" data-dropdown-content aria-autoclose="false" class="f-dropdown content medium addLinkBox" aria-hidden="true" tabindex="-1">
-    <form method="get" id="add" action="/<%= $username %>/insert">
-        <input type="text"  name="url" value="" placeholder="Enter your URL"/>
-        <textarea name="desc" value=""  placeholder="description"></textarea>
-        <button  type="submit" value="hinzufuegen" href="#" class="button expand tiny">Save it!</button>
-        </div>
-    </form>
-</div> 
-<div id="searchBox" data-dropdown-content aria-autoclose="false" class="f-dropdown content medium searchBox" aria-hidden="true" tabindex="-1">
-     <form method="get" action="/<%= $username %>">
-        <input type="text" name="q" value="<%= $self->param('q') %>" placeholder="Enter your search term..."/>
 
-        <% foreach my $type (@{$types}) {
-           my $param_type = $self->param('t') || '';
-           my $checked    = ($type eq $param_type) ? 'checked' : '';
-         %>
-        <input type="radio" name="t" value="<%= $type %>"<%= $checked %> ><%= $type %>&nbsp;
-        <% } %>
-        <button type="submit" value="Suchen" class="button expand tiny">suchen</button>
-
-      </form>
+<!-- Popover for add, will be visible on click on search icon -->
+<div class="addPopover hide"> 
+    <div class="head ">Add Link</div>
+    <div class="content">
+        <form method="get" id="add" action="/<%= $username %>/insert">
+            <div class="form-group ">
+                <input type="text"  name="url" class="form-control"  value="" placeholder="Enter your URL"/>
+            </div>
+            <div class="form-group">
+                <textarea name="desc" value="" class="form-control"  placeholder="description"></textarea>
+            </div>
+            <button  type="submit" value="hinzufuegen" class="btn btn-default btn-block">Save it!</button>
+        </form>
+    </div>
 </div>
 
+<!-- Popover for search, will be visible on click on search icon -->
+<div class="searchPopover hide"> 
+    <div class="head ">Search</div>
+    <div class="content">
+        <form method="get" action="/<%= $username %>">
+            <div class="form-group has-feedback">
+                <input type="text" class="form-control js-hasclear" name="q" value="<%= $self->param('q') %>" placeholder="Enter your search term..."/>
+                <span class="js-clearer glyphicon glyphicon-remove-circle form-control-feedback"></span>
+            </div>
+            <div class="form-group">
+            <% foreach my $type (@{$types}) {
+               my $param_type = $self->param('t') || '';
+               my $checked    = ($type eq $param_type) ? 'checked' : '';
+             %>
+              <label class="radio-inline">
+                  <input type="radio" name="t" value="<%= $type %>"<%= $checked %> ><%= $type %> 
+                </label>
+            <% } %>
+            </div>
+            <button type="submit" value="Suchen" class="btn btn-default btn-block">suchen</button>
 
+        </form>
+    </div>
+</div>
+    
 
 <b><%= $count %> von <%= $total %></b> bookmarks found<br>
 

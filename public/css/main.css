@@ -11,7 +11,21 @@
   margin-bottom: 20px; 
 }
 
+.navbar .donkey{
+	height: 35px;
+}
 
+.navbar .popover{
+	width: 300px;
+}
+
+.navbar .glyphicon{
+	cursor: pointer;
+}
+
+.navbar .form-control-feedback{
+	pointer-events: all;
+}
 
 
 

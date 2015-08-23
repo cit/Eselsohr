@@ -5,21 +5,23 @@
    my $page_next = ($self->param('p')) ? $self->param('p') + 1 : 2;
 %>
 
-<p class="page_navigation" align="center">
+<nav>
+	<ul class="pager">
 <%
-   if ($self->param('p') and $self->param('p') > 1) {
+   		if ($self->param('p') and $self->param('p') > 1) {
 %>
-    <a id="page_back" href="?p=<%= $self->param('p') - 1 %>&q=<%= $self->param('q') %>&t=<%= $self->param('t') %>"><%=l 'prev_page' %></a>
+    		<li><a href="?p=<%= $self->param('p') - 1 %>&q=<%= $self->param('q') %>&t=<%= $self->param('t') %>"><%=l 'prev_page' %></a></li>
 <%
-   }
+   		}
 %>
 
 
 <%
-   if ($page_next <= $last_page) {
+   		if ($page_next <= $last_page) {
 %>
-    <a id="page_next" href="?p=<%= $page_next %>&q=<%= $self->param('q') %>&t=<%= $self->param('t') %>"><%=l 'next_page' %></a>
+    		<li><a href="?p=<%= $page_next %>&q=<%= $self->param('q') %>&t=<%= $self->param('t') %>"><%=l 'next_page' %></a></li>
 <%
-    }
+    	}
 %>
-</p>
+	</ul>
+</nav>

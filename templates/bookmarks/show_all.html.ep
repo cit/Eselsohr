@@ -75,47 +75,53 @@
         </form>
     </div>
 </div>
-    
-
+<!-- /nav -->    
+<section>
 <b><%= $count %> von <%= $total %></b> bookmarks found<br>
 
 %= include 'bookmarks/page_navigation'
 
-<table data-user='<%= $username %>' border="0" cellspacing="0" cellpadding="3" width="100%" class="datasheet">
-  <th><%=l 'date' %></th>
-  <th><%=l 'description' %></th>
-  <th><%=l 'hostname' %></th>
-  <th><%=l 'id' %></th>
-  <th><%=l 'size' %>/<%=l 'type' %></th>
-<%
-   my $i = 0;
-   for my $url (@$bookmarks) {
- %>
-<tr class="<%= ($i % 2) ? 'even' : 'odd' %>">
-  <td><a href="<%= $url->url %>" target="_foo"><%= $url->date %></a></td>
-<%
-     my $desc = $url->desc;
-     $desc =~ s/#(\w+)/\<a href=\"\?q=%23$1\">#$1<\/a>/g;
- %>
-    <td id="<%= $url->id %>">
-      <span class="editableText"><%== $desc %></span>
-      [<a href="/<%= $username %>/delete/<%= $url->id %>/">Delete</a>]
-      [<a class="editText">edit</a>]
-    </td>
-  <td><%= $url->host %></td>
-  <% if ($url->mime) { %>
-    <td><a href="/<%= $url->id %>/<%= $url->id %>.<%= $url->ext %>"><%= $url->id %></a></td>
-      <td><%= sprintf("%.2f", ($url->size/1024)) %> KB <br> <%= $url->mime %></td>
-  <% } else { %>
-     <td><%= $url->id %></td>
-     <td>-</td>
-  <% } %>
-</tr>
-<%
-   $i++;
-   }
-%>
-
+<table data-user='<%= $username %>' class="table table-striped table-hover table-condensed">
+    <thead>
+        <tr>
+          <th><%=l 'date' %></th>
+          <th><%=l 'description' %></th>
+          <th><%=l 'hostname' %></th>
+          <th><%=l 'id' %></th>
+          <th><%=l 'size' %>/<%=l 'type' %></th>
+        </tr>
+    </thead>
+    <tbody>
+        <%
+           my $i = 0;
+           for my $url (@$bookmarks) {
+         %>
+        <tr class="<%= ($i % 2) ? 'even' : 'odd' %>">
+          <td><a href="<%= $url->url %>" target="_foo"><%= $url->date %></a></td>
+        <%
+             my $desc = $url->desc;
+             $desc =~ s/#(\w+)/\<a href=\"\?q=%23$1\">#$1<\/a>/g;
+         %>
+            <td id="<%= $url->id %>">
+              <span class="editableText"><%== $desc %></span>
+              [<a href="/<%= $username %>/delete/<%= $url->id %>/">Delete</a>]
+              [<a class="editText">edit</a>]
+            </td>
+          <td><%= $url->host %></td>
+          <% if ($url->mime) { %>
+            <td><a href="/<%= $url->id %>/<%= $url->id %>.<%= $url->ext %>"><%= $url->id %></a></td>
+              <td><%= sprintf("%.2f", ($url->size/1024)) %> KB <br> <%= $url->mime %></td>
+          <% } else { %>
+             <td><%= $url->id %></td>
+             <td>-</td>
+          <% } %>
+        </tr>
+        <%
+           $i++;
+           }
+        %>
+    </tbody>
 </table>
 
 %= include 'bookmarks/page_navigation'
+</section>

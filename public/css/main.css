@@ -1,9 +1,8 @@
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-.col-centered{
-    margin: 0 auto;
-    float: none;
+body { 
+	padding-top: 70px; /*For fixed navbar*/
 }
 
 .donkey {
@@ -11,6 +10,9 @@
   margin-bottom: 20px; 
 }
 
+/*--------------------------------------------------
+	Navigation
+----------------------------------------------------*/
 .navbar .donkey{
 	height: 35px;
 }
@@ -27,8 +29,21 @@
 	pointer-events: all;
 }
 
+/* ---------------------------------------------
+	overwrite bootstrap
+-----------------------------------------------*/
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
 
+.pager{
+	margin: 10px 0;
+}
 
+.table>tbody>tr>td{
+	vertical-align: middle;
+}
 
 
 

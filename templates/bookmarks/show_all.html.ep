@@ -9,7 +9,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="/<%= $username %>">
         <img class="donkey" src="img/donkey.png" alt="Donkey head, with bouncing ear" />
       </a>
     </div>

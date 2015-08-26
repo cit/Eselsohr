@@ -55,6 +55,19 @@ sub update {
     $bookmark->update(desc => $self->param('desc'));
 }
 
+sub archive {
+    my $self  = shift;
+    my $id    = $self->param('id');
+    my $query = 'WHERE id=?';
+
+    my ($bm) = Eselsohr::Model::Bookmarks->select($query, $id);
+    my $dt   = DateTime::Format::SQLite->parse_datetime($bm->{date});
+    my $path = join '/', $bm->{user_id}, $dt->ymd('/'), $bm->{id},
+        $bm->{id};
+
+    $self->reply->static('../archive/' . $path . '.html');
+}
+
 sub delete {
     my $self        = shift;
     my $user_id     = $self->session('user_id');

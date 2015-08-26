@@ -13,6 +13,8 @@ WriteMakefile(
       'Mojolicious::Plugin::I18N'   => '1.5',
       'DateTime'                    => '1.18',
       'DateTime::Format::SQLite'    => '0.11',
+      'WWW::Mechanize'              => '1.75',
+      'MIME::Types'                 => '2.11',
   },
   test      => {TESTS => 't/*.t'}
 );

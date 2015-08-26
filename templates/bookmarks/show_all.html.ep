@@ -109,7 +109,7 @@
             </td>
           <td><%= $url->host %></td>
           <% if ($url->mime) { %>
-            <td><a href="/<%= $url->id %>/<%= $url->id %>.<%= $url->ext %>"><%= $url->id %></a></td>
+            <td><a href="/<%= $username %>/archive/<%= $url->id %>"><%= $url->id %></a></td>
               <td><%= sprintf("%.2f", ($url->size/1024)) %> KB <br> <%= $url->mime %></td>
           <% } else { %>
              <td><%= $url->id %></td>

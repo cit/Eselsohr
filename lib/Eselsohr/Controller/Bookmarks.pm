@@ -4,6 +4,7 @@ use Mojo::Base 'Mojolicious::Controller';
 use DateTime;
 use Eselsohr::Model;
 use Eselsohr::Model::Bookmarks;
+use DateTime::Format::SQLite;
 
 sub show_all {
     my $self    = shift;
@@ -36,11 +37,13 @@ sub insert {
     $self->param('url') =~ /(https?|http):\/\/(?<hostname>$host_regex)/;
 
     Eselsohr::Model::Bookmarks->create(
-        user_id => $self->session('user_id'),
-        date    => DateTime->now(locale=>'de_DE')->set_time_zone('Europe/Berlin'),
-        url     => $self->param('url'),
-        host    => $+{hostname},
-        desc    => $self->param('desc'),
+        user_id     => $self->session('user_id'),
+        date        => DateTime->now(locale=>'de_DE')->set_time_zone('Europe/Berlin'),
+        url         => $self->param('url'),
+        host        => $+{hostname},
+        desc        => $self->param('desc'),
+        cached      => 0,
+        cache_tries => 0,
     );
 
     $self->redirect_to('/' . $self->session('username'));

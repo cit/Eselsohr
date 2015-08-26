@@ -46,8 +46,7 @@ for my $bookmark (Eselsohr::Model::Bookmarks->select($query, 0)) {
 
     ## Create the folder where to save the archive files
     my $folder = $Bin . '/../archive/';
-    my $path   = join '/', $bookmark->{user_id}, $dt->ymd('/'), $bookmark->{id},
-        $bookmark->{id};
+    my $path   = join '/', $bookmark->{user_id}, $dt->ymd('/'), $bookmark->{id};
     mkpath($folder . $path);
 
     ## Create new file and print the content in it

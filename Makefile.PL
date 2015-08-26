@@ -12,6 +12,7 @@ WriteMakefile(
       'Mojolicious::Plugin::Bcrypt' => '0.14',
       'Mojolicious::Plugin::I18N'   => '1.5',
       'DateTime'                    => '1.18',
+      'DateTime::Format::SQLite'    => '0.11',
   },
   test      => {TESTS => 't/*.t'}
 );
